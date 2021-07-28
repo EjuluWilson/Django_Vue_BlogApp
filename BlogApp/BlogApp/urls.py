@@ -16,10 +16,31 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+#handling django-registration user reistration form for custom model
+from django_registration.backends.one_step.views import RegistrationView
+from users.forms import UserForm
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #provides auth urls(login and logout) via the browserble api
     path('auth/', include('rest_framework.urls')),
 
-    # path('accounts/', include('allauth.urls')), #allauth urls
-    # path('rest-auth/', include('rest_auth.urls')), #django-rest-auth urls
+
+    ############django-registration##########
+
+    path('accounts/register/',
+        RegistrationView.as_view(
+            form_class=UserForm,
+            success_url = "/",
+        ),
+        name='django_registration_register',
+    ),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    ############django-rest-auth##########
+    #django-rest-auth urls (login/out/password reset/confirm etc..)
+    path('rest-auth/', include('rest_auth.urls')), 
+
+    #django-rest-auth.registration urls (provides url for reg,email ver, etc)
+    path('rest-auth/registration/', include('rest_auth.registration.urls')), 
 ]

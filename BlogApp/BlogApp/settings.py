@@ -37,8 +37,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', #rquired by allauth and 'rest_auth.registration'
+
+
     'rest_framework',
     'rest_framework.authtoken', #for token authentication
+
+    #allauth packages
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #django-rest-allauth
+    'rest_auth',
+    'rest_auth.registration',
+
+    #crispy_forms
+    "crispy_forms",
+    "crispy_bootstrap5",
+
     'users',
 
 
@@ -118,6 +135,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+#django auth settings
+# requests' redirected for login when using the login_required() decorator,
+LOGIN_URL = "accounts/login/"
+#redirect after login when the LoginView doesn’t get a next GET parameter.
+LOGIN_REDIRECT_URL = "/" 
+# requests' redirect after logout if LogoutView doesn’t have a next_page attribute
+LOGOUT_REDIRECT_URL = "/"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -130,3 +155,14 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.UserModel'
+
+#required by pakages requiring 'django.contrib.sites'
+SITE_ID = 1
+
+#crispy_forms configaration
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#allauth configaration
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True

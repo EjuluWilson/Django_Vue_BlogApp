@@ -27,6 +27,8 @@ urlpatterns = [
     #provides auth urls(login and logout) via the browserble api
     path('auth/', include('rest_framework.urls')),
 
+    path('api/', include('users.urls')),
+  
 
     ############ django-registration  ##########
 
@@ -42,7 +44,7 @@ urlpatterns = [
     ############django-rest-auth##########
     #django-rest-auth urls (login/out/password reset/confirm etc..)
     path('rest-auth/', include('rest_auth.urls')), 
-
+     
     #django-rest-auth.registration urls (provides url for reg,email ver, etc)
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     

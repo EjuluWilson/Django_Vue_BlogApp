@@ -26,7 +26,7 @@ urlpatterns = [
     path('auth/', include('rest_framework.urls')),
 
 
-    ############django-registration##########
+    ############ django-registration  ##########
 
     path('accounts/register/',
         RegistrationView.as_view(

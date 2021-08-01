@@ -28,6 +28,9 @@ urlpatterns = [
     path('auth/', include('rest_framework.urls')),
 
     path('api/', include('users.urls')),
+
+    #articles
+    path('api/', include('articles.urls')),
   
 
     ############ django-registration  ##########

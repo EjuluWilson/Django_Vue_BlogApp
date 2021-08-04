@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,6 +55,9 @@ INSTALLED_APPS = [
     #crispy_forms
     "crispy_forms",
     "crispy_bootstrap5",
+
+    #webpackloader
+    "webpack_loader",
 
     'users',
     'articles',
@@ -177,4 +180,12 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ]
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/', # must end with slash
+        # 'STATS_FILE': '../frontend/webpack-stats.json',
+        'STATS_FILE': os.path.join(BASE_DIR, '../frontend', 'webpack-stats.json'),
+    }
 }

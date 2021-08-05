@@ -185,7 +185,7 @@ REST_FRAMEWORK = {
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'dist/', # must end with slash
-        # 'STATS_FILE': '../frontend/webpack-stats.json',
-        'STATS_FILE': os.path.join(BASE_DIR, '../frontend', 'webpack-stats.json'),
+        'STATS_FILE': BASE_DIR/'frontend/webpack-stats.json',
+        # 'STATS_FILE': os.path.join(BASE_DIR, '../frontend', 'webpack-stats.json'),
     }
 }
